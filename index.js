@@ -44,6 +44,9 @@ const ConcurrencyManager = (axios, MAX_CONCURRENT = 10) => {
     detach: () => {
       axios.interceptors.request.eject(instance.interceptors.request);
       axios.interceptors.response.eject(instance.interceptors.response);
+    },
+    clear: () => {
+      instance.queue.length = 0;
     }
   };
   // queue concurrent requests
